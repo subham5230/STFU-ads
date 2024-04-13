@@ -9,10 +9,10 @@ interface Manifest {
     action: {
         default_popup: string
     }
-    options_ui: {
-        page: string
-        open_in_tab: boolean
-    }
+    // options_ui: {
+    //     page: string
+    //     open_in_tab: boolean
+    // }
     background: {
         service_worker: string
         type: string
@@ -21,10 +21,10 @@ interface Manifest {
         [key: number]: string
     }
     permissions: string[]
-    content_scripts: Array<{
-        matches: string[]
-        js: string[]
-    }>
+    // content_scripts: Array<{
+    //     matches: string[]
+    //     js: string[]
+    // }>
     web_accessible_resources?: Array<{
         matches: string[]
         resources: string[]
@@ -55,10 +55,10 @@ const createBaseManifest = async (): Promise<Manifest> => {
             action: {
                 default_popup: './src/scripts/popup/popup.html'
             },
-            options_ui: {
-                page: './src/scripts/options/options.html',
-                open_in_tab: true
-            },
+            // options_ui: {
+            //     page: './src/scripts/options/options.html',
+            //     open_in_tab: true
+            // },
             background: {
                 service_worker: 'js/service-worker.js',
                 type: 'module'
@@ -68,13 +68,13 @@ const createBaseManifest = async (): Promise<Manifest> => {
                 48: './assets/icon-48.png',
                 128: './assets/icon-128.png'
             },
-            permissions: [],
-            content_scripts: [
-                {
-                    matches: ['<all_urls>'],
-                    js: ['./js/content.js']
-                }
-            ],
+            permissions: ['tabs', 'activeTab'],
+            // content_scripts: [
+            //     {
+            //         matches: ['<all_urls>'],
+            //         js: ['./js/content.js']
+            //     }
+            // ],
             commands: {
                 refresh_extension: {
                     suggested_key: {
